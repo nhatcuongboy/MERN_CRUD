@@ -8,7 +8,8 @@ import "./Header.scss";
 // Header.propTypes = {}
 
 const Header = () => {
-  const currentUser = useSelector(state => state.authReducer.user)
+  const isLogged = useSelector(state => state.authReducer.isLogged)
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -26,8 +27,7 @@ const Header = () => {
           <Col xs="auto">
             <a
               className="header__link header__title"
-              href="https://facebook.com/nhatcuongboy"
-              target="_blank"
+              href="/"
               rel="noopener noreferrer"
             >
               MERN CRUD
@@ -45,7 +45,7 @@ const Header = () => {
             </NavLink>
           </Col> */}
 
-          {Object.keys(currentUser).length !== 0 && <span style={{ cursor: 'pointer' }} onClick={logout}>
+          {isLogged && <span style={{ cursor: 'pointer' }} onClick={logout}>
             Logout
           </span>}
         </Row>

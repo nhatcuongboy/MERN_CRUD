@@ -3,6 +3,7 @@ const defaultState = {
   isLogoutting: false,
   error: "",
   user: {},
+  isLogged: false,
 };
 
 const reducer = (state = defaultState, action) => {
@@ -15,6 +16,7 @@ const reducer = (state = defaultState, action) => {
         ...state,
         isLogging: false,
         user: action.user,
+        isLogged: true,
       };
     case "LOGIN_FAILURE":
       return { ...state, isLogging: false, error: action.error };
@@ -27,6 +29,7 @@ const reducer = (state = defaultState, action) => {
         ...state,
         isLogoutting: false,
         user: {},
+        isLogged: false,
       };
     case "LOGOUT_FAILURE":
       return { ...state, isLogoutting: false, error: action.error };
