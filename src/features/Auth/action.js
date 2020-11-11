@@ -15,3 +15,18 @@ export const loginFailure = (error) => ({
   type: "LOGIN_FAILURE",
   error,
 });
+
+// Logout
+export const logoutRequest = (actionSuccess) => ({
+  type: "LOGOUT_REQUEST",
+  actionSuccess,
+});
+
+export const logoutSuccess = () => ({
+  type: "LOGOUT_SUCCESS",
+});
+
+export const logoutFailure = (error) => ({
+  type: "LOGOUT_FAILURE",
+  error,
+});

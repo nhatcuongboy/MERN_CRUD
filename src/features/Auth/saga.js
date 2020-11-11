@@ -5,12 +5,16 @@ import { setToken } from "../../configures/axios";
 // import jwt from "jsonwebtoken";
 
 export default function* rootSaga() {
-  yield all([yield takeLatest("LOGIN_REQUEST", loginRequest)]);
+  yield all([
+    yield takeLatest("LOGIN_REQUEST", loginRequest),
+    yield takeLatest("LOGOUT_REQUEST", logoutRequest)
+  ]);
 }
 
 function* loginRequest({ data, actionSuccess }) {
   try {
     const user = yield call(api.login, data);
+    console.log(user)
     yield put(action.loginSuccess(user));
     setToken(user.token);
     localStorage.setItem("jwtToken", user.token);
@@ -21,5 +25,19 @@ function* loginRequest({ data, actionSuccess }) {
   } catch (error) {
     yield put(action.loginFailure(error));
     setToken("");
+  }
+}
+
+function* logoutRequest({ actionSuccess }) {
+  try {
+    localStorage.removeItem('jwtToken');
+    setToken('');
+    yield put(action.logoutSuccess());
+    if (actionSuccess) {
+      actionSuccess();
+    }
+  } catch (error) {
+    yield put(action.logoutFailure(error));
+    setToken('');
   }
 }

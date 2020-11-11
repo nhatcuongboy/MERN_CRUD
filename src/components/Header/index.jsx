@@ -1,10 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
+import { useDispatch, useSelector, connect } from "react-redux";
+import * as AuthAction from "../../features/Auth/action";
+import { useHistory } from "react-router-dom";
 import "./Header.scss";
 // Header.propTypes = {}
 
 const Header = () => {
+  const currentUser = useSelector(state => state.authReducer.user)
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logout = () => {
+    dispatch(AuthAction.logoutRequest(() => {
+      history.push("/login");
+    }))
+  }
+
+
   return (
     <header className="header">
       <Container>
@@ -12,15 +26,15 @@ const Header = () => {
           <Col xs="auto">
             <a
               className="header__link header__title"
-              href="https://youtube.com/easyfrontend"
+              href="https://facebook.com/nhatcuongboy"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Final App
+              MERN CRUD
             </a>
           </Col>
 
-          <Col xs="auto">
+          {/* <Col xs="auto">
             <NavLink
               exact
               className="header__link"
@@ -29,7 +43,11 @@ const Header = () => {
             >
               Equipment
             </NavLink>
-          </Col>
+          </Col> */}
+
+          {Object.keys(currentUser).length !== 0 && <span style={{ cursor: 'pointer' }} onClick={logout}>
+            Logout
+          </span>}
         </Row>
       </Container>
     </header>
