@@ -27,6 +27,7 @@ request.interceptors.response.use(
 
 const setToken = (token) => {
   request.defaults.headers.common.Authorization = "Bearer " + token;
+  // delete request.defaults.headers.common['Authorization'];
 };
 
 export { request, setToken };

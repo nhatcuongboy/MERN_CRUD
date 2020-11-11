@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
+    "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.14.1",
     "querystring": "^0.2.0",
     "react": "^16.13.1",

@@ -6,8 +6,13 @@ import { Provider } from "react-redux";
 import configureStore from "./configureStore";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { setToken } from "./configures/axios";
 
 const store = configureStore();
+
+if (localStorage.jwtToken) {
+  setToken(localStorage.jwtToken)
+}
 
 ReactDOM.render(
   // <React.StrictMode>
