@@ -4,7 +4,7 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import NotFound from "./components/NotFound";
-// import PrivateRoute from './components/RestrictRoute/PrivateRoute'
+import PrivateRoute from './components/RestrictRoute/PrivateRoute'
 
 // const Home = React.lazy(() => import("./features/Home"));
 const Equipment = React.lazy(() => import("./features/Equipment"));
@@ -19,8 +19,8 @@ function App() {
           <Switch>
             {/* <Route exact path="/" component={Home} /> */}
             <Redirect exact from="/" to="/equipment" />
-            <Route path="/equipment" component={Equipment} />
-            {/* <PrivateRoute path="/equipment" component={Equipment} exact /> */}
+            {/* <Route path="/equipment" component={Equipment} /> */}
+            <PrivateRoute path="/equipment" component={Equipment} exact />
             <Route path="/login" component={Login} />
             <Route component={NotFound} />
           </Switch>
