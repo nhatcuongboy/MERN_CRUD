@@ -8,6 +8,8 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case "CHECK_LOGIN":
+      return { ...state, isLogged: localStorage.getItem('jwtToken') ? true : false, user: localStorage.getItem('currentUser') };
     // LOGIN
     case "LOGIN_REQUEST":
       return { ...state, isLogging: true };

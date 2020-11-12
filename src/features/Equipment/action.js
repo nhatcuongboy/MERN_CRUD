@@ -63,3 +63,19 @@ export const editEquipmentFailure = (error) => ({
   type: "EDIT_EQUIPMENT_FAILURE",
   error,
 });
+
+export const testGraphqlRequest = (data, actionSuccess) => ({
+  type: "TEST_GRAPHQL_REQUEST",
+  data,
+  actionSuccess,
+});
+
+export const testGraphqlSuccess = (result) => ({
+  type: "TEST_GRAPHQL_SUCCESS",
+  result,
+});
+
+export const testGraphqlFailure = (error) => ({
+  type: "TEST_GRAPHQL_FAILURE",
+  error,
+});

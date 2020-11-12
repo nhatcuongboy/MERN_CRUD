@@ -6,10 +6,19 @@ const defaultState = {
   isAddingEquipment: false,
   isSavingEquipment: false,
   error: "",
+  isTesting: false,
+  result: {}
 };
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case "TEST_GRAPHQL_REQUEST":
+      return { ...state, isTesting: true };
+    case "TEST_GRAPHQL_SUCCESS":
+      return { ...state, isTesting: false, result: action.result };
+    case "TEST_GRAPHQL_FAILURE":
+      return { ...state, isTesting: false, error: action.error };
+
     //GET EQUIPMENTS
     case "GET_EQUIPMENTS_REQUEST":
       return { ...state, isLoadingEquipments: true };

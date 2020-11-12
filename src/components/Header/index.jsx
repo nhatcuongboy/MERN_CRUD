@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import { useDispatch, useSelector, connect } from "react-redux";
@@ -19,6 +19,7 @@ const Header = () => {
     }))
   }
 
+  // dispatch(AuthAction.checkLoginRequest())
 
   return (
     <header className="header">
@@ -34,6 +35,10 @@ const Header = () => {
             </a>
           </Col>
 
+          {isLogged && <span style={{ cursor: 'pointer' }} onClick={logout}>
+            Logout
+          </span>}
+
           {/* <Col xs="auto">
             <NavLink
               exact
@@ -44,10 +49,6 @@ const Header = () => {
               Equipment
             </NavLink>
           </Col> */}
-
-          {isLogged && <span style={{ cursor: 'pointer' }} onClick={logout}>
-            Logout
-          </span>}
         </Row>
       </Container>
     </header>
@@ -55,3 +56,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

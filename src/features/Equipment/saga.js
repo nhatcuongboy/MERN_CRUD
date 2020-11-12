@@ -8,7 +8,25 @@ export default function* rootSaga() {
     yield takeLatest("ADD_EQUIPMENT_REQUEST", addEquipmentRequest),
     yield takeLatest("GET_EQUIPMENT_BY_ID_REQUEST", getEquipmentByIdRequest),
     yield takeLatest("EDIT_EQUIPMENT_REQUEST", editEquipmentRequest),
+    yield takeLatest("TEST_GRAPHQL_REQUEST", testGraphqlRequest),
   ]);
+}
+
+function* testGraphqlRequest({ actionSuccess }) {
+  try {
+    const query = {
+      title: "GraphQL note1s",
+      body: "A long body of text about GraphQL"
+    }
+    const result = yield call(api.testGraphql, query);
+    yield put(action.testGraphqlSuccess(result));
+    if (actionSuccess) {
+      actionSuccess(result);
+    }
+  } catch (error) {
+    console.log(error)
+    yield put(action.testGraphqlFailure(error));
+  }
 }
 
 function* getEquipmentsRequest({ actionSuccess }) {

@@ -1,5 +1,9 @@
 // import * as ActionTypes from "../constants/actionTypes";
 
+export const checkLoginRequest = () => ({
+  type: "CHECK_LOGIN",
+});
+
 export const loginRequest = (data, actionSuccess) => ({
   type: "LOGIN_REQUEST",
   data,

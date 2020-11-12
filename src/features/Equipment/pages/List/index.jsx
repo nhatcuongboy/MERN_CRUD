@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import Select from "react-select";
 
-const List = ({ getEquipments, equipmentList, isLoadingEquipments }) => {
+const List = ({ getEquipments, equipmentList, isLoadingEquipments, testGraphql }) => {
   // const equipments = useSelector(state => state.equipmentReducer.equipments)
   // const dispatch = useDispatch()
   useEffect(() => {
@@ -24,6 +24,7 @@ const List = ({ getEquipments, equipmentList, isLoadingEquipments }) => {
     getEquipments((eq) => {
       // console.log(eq);
     });
+    testGraphql();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -88,6 +89,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     getEquipments: (actionSuccess) =>
       dispatch(EquipmentActions.getEquipmentsRequest(actionSuccess)),
+    testGraphql: () => dispatch(EquipmentActions.testGraphqlRequest())
   };
 }
 

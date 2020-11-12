@@ -14,11 +14,10 @@ export default function* rootSaga() {
 function* loginRequest({ data, actionSuccess }) {
   try {
     const user = yield call(api.login, data);
-    console.log(user)
     yield put(action.loginSuccess(user));
     setToken(user.token);
     localStorage.setItem("jwtToken", user.token);
-    // console.log(jwt.decode(user.token))
+    localStorage.setItem("currentUser", user);
     if (actionSuccess) {
       actionSuccess(user);
     }
@@ -31,6 +30,7 @@ function* loginRequest({ data, actionSuccess }) {
 function* logoutRequest({ actionSuccess }) {
   try {
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('currentUser');
     setToken('');
     yield put(action.logoutSuccess());
     if (actionSuccess) {
