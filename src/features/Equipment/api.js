@@ -19,14 +19,15 @@ export async function editEquipment(id, data) {
 }
 
 export async function testGraphql(data) {
-  return axios.post('http://a92556a1e943.ngrok.io/graphql', `mutation {
-    addNote(input: { params: { title:"${data.title}", body:${data.body} } } ) {
-      note {
-        id
-        title
-        body
+  return axios.post('http://a92556a1e943.ngrok.io/graphql', {
+    query: `mutation {
+      addNote(input: { params: { title:"${data.title}", body:${data.body} } } ) {
+        note {
+          id
+          title
+          body
+        }
       }
-    }
-  }`
-  );
+    }`
+  });
 }

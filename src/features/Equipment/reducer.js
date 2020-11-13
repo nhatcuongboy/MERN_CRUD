@@ -12,6 +12,7 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    // TEST GRAPHQL
     case "TEST_GRAPHQL_REQUEST":
       return { ...state, isTesting: true };
     case "TEST_GRAPHQL_SUCCESS":

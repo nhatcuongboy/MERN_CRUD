@@ -2,10 +2,8 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import LoadingView from './components/LoadingView/index'
 import { Provider } from "react-redux";
-import { configureStore, persistor } from "./configureStore";
-import { PersistGate } from 'redux-persist/integration/react'
+import configureStore from "./configureStore";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { setToken } from "./configures/axios";
@@ -18,9 +16,7 @@ if (localStorage.jwtToken) {
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <PersistGate loading={<LoadingView />} persistor={persistor}> */}
     <App />
-    {/* </PersistGate> */}
   </Provider>,
   document.getElementById("root")
 );

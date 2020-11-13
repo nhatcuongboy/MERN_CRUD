@@ -8,15 +8,12 @@ import List from "./pages/List";
 
 const Equipment = (props) => {
   const match = useRouteMatch();
-  //   console.log({ match });
 
   return (
     <Switch>
       <Route exact path={match.url} component={List} />
-
       <Route path={`${match.url}/add`} component={AddEdit} />
       <Route path={`${match.url}/edit/:equipmentId`} component={AddEdit} />
-
       <Route component={NotFound} />
     </Switch>
   );

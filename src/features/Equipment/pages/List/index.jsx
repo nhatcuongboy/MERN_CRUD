@@ -24,7 +24,7 @@ const List = ({ getEquipments, equipmentList, isLoadingEquipments, testGraphql }
     getEquipments((eq) => {
       // console.log(eq);
     });
-    testGraphql();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-// import { useDispatch } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -19,8 +18,7 @@ function App() {
           <Switch>
             {/* <Route exact path="/" component={Home} /> */}
             <Redirect exact from="/" to="/equipment" />
-            {/* <Route path="/equipment" component={Equipment} /> */}
-            <PrivateRoute path="/equipment" component={Equipment} exact />
+            <PrivateRoute path="/equipment" component={Equipment} />
             <Route path="/login" component={Login} />
             <Route component={NotFound} />
           </Switch>

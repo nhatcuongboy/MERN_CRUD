@@ -1,5 +1,3 @@
-// import * as ActionTypes from "../constants/actionTypes";
-
 export const getEquipmentsRequest = (actionSuccess) => ({
   type: "GET_EQUIPMENTS_REQUEST",
   actionSuccess,
